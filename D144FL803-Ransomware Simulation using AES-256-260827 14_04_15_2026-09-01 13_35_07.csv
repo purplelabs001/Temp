@@ -1,0 +1,39 @@
+"SR NO               ","RESPONSE DATE                           ","ACTION NAME                   ","HOST                          ","PLATFORM                                               ","COMMAND                       ","OUTPUT                                            ","MITIGATION                         ","STATUS                   ","USERNAME                      "
+"1                   ","2026-08-27 14:04                        ","Test File & Directory Creation","D144FL803                     ","windows                                                ","New-Item -Path C:\Simulations\testfolder -ItemType Directory -Force; New-Item C:\Simulations\testfolder\doc1.txt -Value 'Confidential data' -Force; New-Item C:\Simulations\testfolder\doc2.txt -Value 'Project plan Q3' -Force; New-Item C:\Simulations\testfolder\config.ini -Value 'Backup config' -Force; cd C:\Simulations\testfolder; Write-Host 'Test files created in C:\Simulations\testfolder'; Get-ChildItem","Directory: C:\Simulations
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        27-08-2026     14:04                testfolder                                                           
+
+
+    Directory: C:\Simulations\testfolder
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        27-08-2026     14:04             17 doc1.txt                                                             
+-a----        27-08-2026     14:04             15 doc2.txt                                                             
+-a----        27-08-2026     14:04             13 config.ini                                                           
+Test files created in C:\Simulations\testfolder
+-a----        27-08-2026     14:04             13 config.ini                                                           
+-a----        27-08-2026     14:04             17 doc1.txt                                                             
+-a----        27-08-2026     14:04             15 doc2.txt","1. Consider encrypting important information to reduce an adversary’s ability to perform tailored data modifications.
+2. Consider implementing IT disaster recovery plans that contain procedures for taking regular data backups that can be used to restore organizational data.
+3. Ensure least privilege principles are applied to important information resources to reduce exposure to data manipulation risk.","Executed                 ","NT AUTHORITY\SYSTEM           "
+"2                   ","2026-08-27 14:04                        ","AES-256 Encryption Key Generation","D144FL803                     ","windows                                                ","$key = [System.Text.Encoding]::UTF8.GetBytes(( -join ((65..90) + (97..122) | Get-Random -Count 32 | % {[char]$_} ))); $key | Set-Content C:\Simulations\key.txt -Encoding Byte; Write-Host ""AES-256 key generated and saved to C:\Simulations\key.txt""","AES-256 key generated and saved to C:\Simulations\key.txt","                                   ","Executed                 ","NT AUTHORITY\SYSTEM           "
+"3                   ","2026-08-27 14:04                        ","File Encryption               ","D144FL803                     ","windows                                                ","$k=gc C:\Simulations\key.txt -Encoding Byte; $d='C:\Simulations\testfolder'; ls $d -File|?{$_.Extension -ne '.encrypted'}|%{$fn=$d+'\'+$_.Name; $p=[io.file]::ReadAllBytes($fn); $a=[Security.Cryptography.Aes]::Create(); $a.Key=$k; $a.GenerateIV(); $c=$a.CreateEncryptor().TransformFinalBlock($p,0,$p.Length); [io.file]::WriteAllBytes($fn+'.encrypted',($a.IV+$c)); ri $fn; Write-Host ""Enc: $($_.Name)""}; Write-Host ""Encryption done""","Enc: config.ini
+Enc: doc1.txt
+Enc: doc2.txt
+Encryption done","1. Consider encrypting important information to reduce an adversary’s ability to perform tailored data modifications.
+2. Consider implementing IT disaster recovery plans that contain procedures for taking regular data backups that can be used to restore organizational data.
+3. Ensure least privilege principles are applied to important information resources to reduce exposure to data manipulation risk.","Executed                 ","NT AUTHORITY\SYSTEM           "
+"4                   ","2026-08-27 14:04                        ","File Decryption Process       ","D144FL803                     ","windows                                                ","$k=gc C:\Simulations\key.txt -Encoding Byte; cd C:\Simulations\testfolder; ls *.encrypted|%{$d=[io.file]::ReadAllBytes($_);$iv=$d[0..15];$c=$d[16..($d.Length-1)];$a=[Security.Cryptography.Aes]::Create();$a.Key=$k;$a.IV=$iv;$p=$a.CreateDecryptor().TransformFinalBlock($c,0,$c.Length);$o=$_.Name -replace '\.encrypted$','';[io.file]::WriteAllBytes($o,$p);ri $_;Write-Host ""Dec: $($_.Name)""};Write-Host ""Decryption done""","Dec: config.ini.encrypted
+Dec: doc1.txt.encrypted
+Dec: doc2.txt.encrypted
+Decryption done","1. Consider encrypting important information to reduce an adversary’s ability to perform tailored data modifications.
+2. Consider implementing IT disaster recovery plans that contain procedures for taking regular data backups that can be used to restore organizational data.
+3. Ensure least privilege principles are applied to important information resources to reduce exposure to data manipulation risk.","Executed                 ","NT AUTHORITY\SYSTEM           "
+"5                   ","2026-08-27 14:04                        ","Directory Removal             ","D144FL803                     ","windows                                                ","cd C:\; Remove-Item -Recurse -Force C:\Simulations; Write-Host ""Simulation folder deleted""","Simulation folder deleted                         ","1. Making the environment variables associated with command history read only may ensure that the history is preserved.
+2. Forward logging of historical data to remote data store and centralized logging solution to preserve historical command line log data.
+3. Preventing users from deleting or writing to certain files can stop adversaries from maliciously altering their <code>~/.bash_history</code> or <code>ConsoleHost_history.txt</code> files.","Executed                 ","NT AUTHORITY\SYSTEM           "
